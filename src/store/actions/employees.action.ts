@@ -1,4 +1,3 @@
-import { EMPLOYEES_FETCH_FAILURE, EMPLOYEES_FETCH_SUCCESS } from "../constants";
 import employeesService from "../services/employees.service";
 
 const fetch = () => async (dispatch: Function) => {

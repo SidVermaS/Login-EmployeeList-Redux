@@ -11,6 +11,8 @@ import { logout } from "../../../store/actions/user.action";
 import styles from './index.module.scss'
 
 const HeadAppBar = (props: any) => {
+
+
   return (
     <div className={styles.background}>
       <AppBar position="static">
@@ -20,7 +22,7 @@ const HeadAppBar = (props: any) => {
           </IconButton>
           <Typography variant="h6">Employee App</Typography>
           <div className={styles.userLogOutButton}>
-            <Button onClick={() => props.logout(true)} color="inherit">
+            <Button onClick={() => props.logout()} color="inherit">
             Logout
           </Button>
             </div>

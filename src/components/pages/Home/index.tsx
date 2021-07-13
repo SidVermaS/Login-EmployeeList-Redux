@@ -14,6 +14,7 @@ const Home = (props: any) => {
   const [employees, setEmployees] = useState<Array<EmployeeI>>([])
   useEffect(() => {
     props.fetch()
+    // eslint-disable-next-line
   }, [])
   useEffect(() => {
     setEmployees(props.employees)

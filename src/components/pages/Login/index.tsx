@@ -1,14 +1,18 @@
 import { connect } from "react-redux";
+import { useHistory } from "react-router";
 import { Card, CardContent } from "@material-ui/core";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { TextFieldPrimary, ButtonPrimary } from "../../widgets";
 import { login } from "../../../store/actions/user.action";
 import {
-USER_LOGGED_OUT, USER_LOGGED_IN } from "../../../store/constants";
+  USER_LOGGED_OUT, USER_LOGGED_IN
+} from "../../../store/constants";
+import { path } from "../../../PageRoutes/routes";
 import styles from "./index.module.scss";
 
 const Login = (props: any) => {
+  const history: any = useHistory()
   const validationSchema = Yup.object().shape({
     email: Yup.string().email().required(),
     password: Yup.string()
@@ -24,11 +28,14 @@ const Login = (props: any) => {
     validationSchema,
     onSubmit: (values) => {
       handleSubmit(values);
-    },
+    }
   });
   const handleSubmit = async (values: any) => {
-    props.login(values.email, values.password);
+    props.login(values, navigate);
   };
+  const navigate = () => {
+    history.replace(path.Home);
+}
   return (
     <div className={`${styles.background} d-flex justify-content-center`}>
       <div className={`${styles.card} mt-3`}>

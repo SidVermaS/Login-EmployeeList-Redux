@@ -8,9 +8,9 @@ import {
   LOGIN_INVALID_CREDENTIALS,
 } from "../constants";
 
-const login = async (email: string, password: string) => {
+const login = async(values:any) => {
   try {
-    const { status, body } = await postloginAPI({ email, password });
+    const { status, body } = await postloginAPI(values);
     if (status === 200) {
       cookies.save("token", body.token, {});
       return { payload: "Logged in successfully", type: USER_LOGGED_IN };
@@ -28,7 +28,9 @@ const setUser =  () => {
   return { payload: "Logged in successfully", type: USER_LOGGED_IN };
 };
 export const logout = () => {
-  cookies.remove("token");
+  if (cookies.load("token")) {
+    cookies.remove("token");
+  }
   return { payload: "Logged out", type: USER_LOGGED_OUT };
 };
 const userService = {
