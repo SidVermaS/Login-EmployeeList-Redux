@@ -19,7 +19,6 @@ const PageRoutes = (props: any) => {
       displayedUser = false;
     }
     setDisplayedUser(displayedUser)
-    console.log('~~~ displayedUser: ', displayedUser)
     //  eslint-disable-next-line
   }, [cookies.load("token")]);
 
