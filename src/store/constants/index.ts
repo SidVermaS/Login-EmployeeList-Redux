@@ -1,15 +1,17 @@
 import {
-  LOGIN_SUCCESS,
+  USER_LOGGED_IN,
+  USER_LOGGED_OUT,
   LOGIN_FAILURE,
   LOGIN_INVALID_CREDENTIALS,
-} from "./login.constant";
+} from "./user.constant";
 import {
   EMPLOYEES_FETCH_SUCCESS,
   EMPLOYEES_FETCH_FAILURE,
 } from "./employees.constant";
 
 export {
-  LOGIN_SUCCESS,
+  USER_LOGGED_IN,
+  USER_LOGGED_OUT,
   LOGIN_FAILURE,
   LOGIN_INVALID_CREDENTIALS,
   EMPLOYEES_FETCH_SUCCESS,
