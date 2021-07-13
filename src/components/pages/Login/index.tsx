@@ -4,6 +4,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { TextFieldPrimary, ButtonPrimary } from "../../widgets";
 import { login } from "../../../store/actions/user.action";
+import {
+USER_LOGGED_OUT, USER_LOGGED_IN } from "../../../store/constants";
 import styles from "./index.module.scss";
 
 const Login = (props: any) => {
@@ -16,8 +18,8 @@ const Login = (props: any) => {
   });
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: "eve.holt@reqres.in",
+      password: "cityslicka",
     },
     validationSchema,
     onSubmit: (values) => {
@@ -57,6 +59,9 @@ const Login = (props: any) => {
                   onChange={formik.handleChange}
                 />
               </div>
+              <p className={`${props.type !==USER_LOGGED_IN && styles.errorText}`}>
+                {props.type !== USER_LOGGED_OUT  && props.message}
+              </p>
               <div>
                 <ButtonPrimary title="LOGIN" onClick={formik.handleSubmit} />
               </div>
@@ -73,5 +78,6 @@ const Login = (props: any) => {
 
 const mapStateToProps = ({ user }: any) => ({
   type: user.type,
+  message: user.message
 });
 export default connect(mapStateToProps, { login })(Login);

@@ -17,8 +17,11 @@ const setUser = () => (dispatch: Function) => {
 const logout = (navigate: boolean) => async (dispatch: Function) => {
   const result = userService.logout();
   dispatch(result);
+
   if (navigate) {
-    history.replace(path.Login);
+    setTimeout(() => {
+      history.replace(path.Home);
+    },1000)
   }
 };
 

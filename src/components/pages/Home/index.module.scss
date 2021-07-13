@@ -1,1 +1,13 @@
 @import "../../../styles/index.scss";
+
+.background {
+  padding: 50px 80px;
+  .tableCell{
+    :global(.MuiTableCell-root) {
+      background: lightgray;
+    }
+  }
+  :global(.MuiTableCell-root) {
+      font-size: 17px;
+    }
+}

@@ -6,7 +6,10 @@
 
   .card {
     :global(.MuiCard-root) {
-      width: 400px;
+      width: 600px;
+    }
+    .errorText  {
+      color: $commonRed;
     }
   }
 }

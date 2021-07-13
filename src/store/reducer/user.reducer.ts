@@ -4,7 +4,7 @@ import {
   LOGIN_FAILURE,
   LOGIN_INVALID_CREDENTIALS,
 } from "../constants";
-import { ActionI } from "../interfaces";
+import { ActionI } from "../../interfaces";
 const initialState = {
   message: null,
   type: null,
