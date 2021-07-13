@@ -5,27 +5,30 @@ import cookies from "react-cookies";
 import { path, unsecuredRoutes, securedRoutes } from "./routes";
 import { logout, setUser } from "../store/actions/user.action";
 import { NotFound } from "../components/pages";
+import { HeadAppBar } from "../components/widgets";
 const PageRoutes = (props: any) => {
-  const [displayUser, setDisplayUser] = useState<boolean>(false);
+  const [displayedUser, setDisplayedUser] = useState<boolean>(false);
   useEffect(() => {
     const token: string = cookies.load("token");
     if (token) {
       props.setUser();
-      setDisplayUser(true);
+      setDisplayedUser(true);
     } else {
       props.logout(false);
-      setDisplayUser(false);
+      setDisplayedUser(false);
     }
+    // eslint-disable-next-line
   }, [cookies.load("token")]);
   return (
     <>
+      {displayedUser && <HeadAppBar />}
       <Switch>
-        {displayUser
+        {displayedUser
           ? securedRoutes.map(({ path, component }: any) => (
-              <Route key={path} path={path} component={component} />
+              <Route exact key={path} path={path} component={component} />
             ))
           : unsecuredRoutes.map(({ path, component }: any) => (
-              <Route key={path} path={path} component={component} />
+              <Route exact key={path} path={path} component={component} />
             ))}{" "}
         {!cookies.load("token") && <Redirect to={path.Login} />}
         <Route component={NotFound} />

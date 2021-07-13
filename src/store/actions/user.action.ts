@@ -10,7 +10,7 @@ const login =
       history.replace(path.Home);
     }
   };
-const setUser = (dispatch: Function) => {
+const setUser = () => (dispatch: Function) => {
   const result = userService.setUser();
   dispatch(result);
 };
